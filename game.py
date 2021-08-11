@@ -1,4 +1,5 @@
 import random
+import tkinter.messagebox
 
 from tkinter import Canvas
 from snake import Snake
@@ -29,7 +30,8 @@ class Game:
         self.snake.move()
 
         if self._is_snake_touch_wall() or self._is_snake_eats_itself():
-            Game.game_over()
+            self.game_over()
+            exit()
 
         if self._is_snake_eats_apple():
             self.snake.add_chunk()
@@ -41,9 +43,11 @@ class Game:
 
         self.canvas.after(100, self.main)
 
-    @staticmethod
-    def game_over():
-        print("Game over!")
+    def game_over(self):
+        answer: str = tkinter.messagebox.showerror(f"Game over!\nYour score: ")
+
+        if answer:
+            self.canvas.master.destroy()
 
     def spawn_apple(self) -> Apple:
         while True:
