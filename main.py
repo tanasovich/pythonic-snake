@@ -12,4 +12,6 @@ if __name__ == "__main__":
 
     canvas.grid()
 
+    canvas.focus_set() # focus to canvas for keypressing catch
+
     root.mainloop()
