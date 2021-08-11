@@ -6,7 +6,7 @@ class Snake:
     chunk_cell_size: int = 0
 
     def __init__(self, snake_chunks):
-        self.snake_chunks = snake_chunks
+        self.snake_chunks: list = snake_chunks
         self.direction_vector = Snake.directions["Right"]
 
     def move(self):
@@ -27,4 +27,7 @@ class Snake:
                 self.direction_vector = Snake.directions[event.keysym]
 
     def add_chunk(self):
-        pass
+        tail = self.snake_chunks[0]
+        x = tail[2] - Snake.chunk_cell_size
+        y = tail[3] - Snake.chunk_cell_size
+        self.snake_chunks.insert(0, (x, y, x + Snake.chunk_cell_size, y + Snake.chunk_cell_size))
