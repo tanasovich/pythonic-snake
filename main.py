@@ -1,4 +1,5 @@
 import tkinter
+import game
 
 FIELD_WIDTH: int = 800
 FIELD_HEIGHT: int = 600
@@ -13,5 +14,7 @@ if __name__ == "__main__":
     canvas.grid()
 
     canvas.focus_set()  # focus to canvas for keypressing catch
+
+    game = game.Game(root, width=FIELD_WIDTH, height=FIELD_HEIGHT, cell_size=CELL_SIZE)
 
     root.mainloop()
