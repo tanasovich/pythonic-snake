@@ -1,3 +1,6 @@
+import tkinter
+
+
 class Snake:
     directions: dict = {"Left": (-1, 0), "Up": (0, -1), "Right": (1, 0), "Down": (0, 1)}
     chunk_cell_size: int = 0
@@ -16,8 +19,12 @@ class Snake:
                                  x2+self.direction_vector[0]*Snake.chunk_cell_size,
                                  y1+self.direction_vector[1]*Snake.chunk_cell_size)
 
-    def change_direction(self):
-        pass
+    def change_direction(self, event: tkinter.Event):
+        if event.keysym in Snake.directions:
+            if map(sum, zip(self.direction_vector, Snake.directions[event.keysym])) == [0, 0]:
+                return
+            else:
+                self.direction_vector = Snake.directions[event.keysym]
 
     def add_chunk(self):
         pass
