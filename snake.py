@@ -15,8 +15,8 @@ class Snake:
             self.snake_chunks[index] = self.snake_chunks[index + 1]
 
         old_head: SnakeChunk = self.snake_chunks[-2]
-        self.snake_chunks[-1] = SnakeChunk(old_head.x1 + self.direction_vector[0],
-                                           old_head.y1 + self.direction_vector[1],
+        self.snake_chunks[-1] = SnakeChunk(old_head.x1 + self.direction_vector[0]*self.chunk_cell_size,
+                                           old_head.y1 + self.direction_vector[1]*self.chunk_cell_size,
                                            Snake.chunk_cell_size)
 
     def change_direction(self, event: Event):
@@ -27,7 +27,7 @@ class Snake:
                 self.direction_vector = Snake.directions[event.keysym]
 
     def add_chunk(self):
-        tail = self.snake_chunks[0]
-        x = tail[2] - Snake.chunk_cell_size
-        y = tail[3] - Snake.chunk_cell_size
+        tail: SnakeChunk = self.snake_chunks[0]
+        x = tail.x2 - Snake.chunk_cell_size
+        y = tail.y2 - Snake.chunk_cell_size
         self.snake_chunks.insert(0, (x, y, x + Snake.chunk_cell_size, y + Snake.chunk_cell_size))

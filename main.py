@@ -15,6 +15,10 @@ if __name__ == "__main__":
 
     canvas.focus_set()  # focus to canvas for keypressing catch
 
-    game = game.Game(root, width=FIELD_WIDTH, height=FIELD_HEIGHT, cell_size=CELL_SIZE)
+    game = game.Game(canvas, width=FIELD_WIDTH, height=FIELD_HEIGHT, cell_size=CELL_SIZE)
+
+    canvas.bind("<KeyPress>", game.snake.change_direction)
+
+    game.main()
 
     root.mainloop()
