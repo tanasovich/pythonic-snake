@@ -30,4 +30,4 @@ class Snake:
         tail: SnakeChunk = self.snake_chunks[0]
         x = tail.x2 - Snake.chunk_cell_size
         y = tail.y2 - Snake.chunk_cell_size
-        self.snake_chunks.insert(0, (x, y, x + Snake.chunk_cell_size, y + Snake.chunk_cell_size))
+        self.snake_chunks.insert(0, SnakeChunk(x, y, self.chunk_cell_size))
