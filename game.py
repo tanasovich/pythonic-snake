@@ -13,6 +13,7 @@ class Game:
         self.width = width
         self.height = height
         self.cell_size = cell_size
+        self.score: int = 0
 
         snake_chunks: list = [
             SnakeChunk(cell_size, cell_size, cell_size),
@@ -35,6 +36,7 @@ class Game:
 
         if self._is_snake_eats_apple():
             self.snake.add_chunk()
+            self.score += 1
             self.apple = self.spawn_apple()
 
         self.canvas.delete("all")
@@ -44,7 +46,7 @@ class Game:
         self.canvas.after(100, self.main)
 
     def game_over(self):
-        answer: str = tkinter.messagebox.showerror(f"Game over!\nYour score: ")
+        answer: str = tkinter.messagebox.showerror("Game over!", f"Your score: {self.score}")
 
         if answer:
             self.canvas.master.destroy()
