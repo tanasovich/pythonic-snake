@@ -61,14 +61,14 @@ class Game:
 
     def draw(self):
         self.canvas.delete("all")
-        self.draw_snake()
-        self.draw_apple()
+        self._draw_snake()
+        self._draw_apple()
 
-    def draw_snake(self):
+    def _draw_snake(self):
         for chunk in self.snake.snake_chunks:
             self.canvas.create_rectangle(chunk.x1, chunk.y1, chunk.x2, chunk.y2, fill="green")
 
-    def draw_apple(self):
+    def _draw_apple(self):
         self.canvas.create_oval(self.apple.x1, self.apple.y1, self.apple.x2, self.apple.y2, fill="red")
 
     def _is_snake_touch_wall(self) -> bool:
