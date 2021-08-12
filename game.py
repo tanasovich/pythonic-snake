@@ -37,6 +37,7 @@ class Game:
         if self._is_snake_eats_apple():
             self.snake.add_chunk()
             self.score += 1
+            self.canvas.master.score_text.set(f"Score: {self.score}")
             self.apple = self.spawn_apple()
 
         self.draw()
