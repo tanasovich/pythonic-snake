@@ -8,4 +8,9 @@ Application user TKinter package.
 
 Please, run __main.py__ script to play the game.
 
+## Controls
+
++ __Arrow keys__ - change snake direction
++ __Enter__ - toggle Play/Pause
+
 _P. S. Application uses Python 3.9_
