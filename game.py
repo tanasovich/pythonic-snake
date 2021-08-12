@@ -39,9 +39,7 @@ class Game:
             self.score += 1
             self.apple = self.spawn_apple()
 
-        self.canvas.delete("all")
-        self.draw_snake()
-        self.draw_apple()
+        self.draw()
 
         self.canvas.after(150, self.main)
 
@@ -60,6 +58,11 @@ class Game:
                 continue
             else:
                 return Apple(x, y, self.cell_size)
+
+    def draw(self):
+        self.canvas.delete("all")
+        self.draw_snake()
+        self.draw_apple()
 
     def draw_snake(self):
         for chunk in self.snake.snake_chunks:
