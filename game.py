@@ -43,7 +43,7 @@ class Game:
         self.draw_snake()
         self.draw_apple()
 
-        self.canvas.after(100, self.main)
+        self.canvas.after(150, self.main)
 
     def game_over(self):
         answer: str = tkinter.messagebox.showerror("Game over!", f"Your score: {self.score}")
