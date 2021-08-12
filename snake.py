@@ -21,7 +21,7 @@ class Snake:
 
     def change_direction(self, event: Event):
         if event.keysym in Snake.directions:
-            if map(sum, zip(self.direction_vector, Snake.directions[event.keysym])) == [0, 0]:
+            if list(map(sum, zip(self.direction_vector, Snake.directions[event.keysym]))) == [0, 0]:
                 return
             else:
                 self.direction_vector = Snake.directions[event.keysym]
