@@ -2,6 +2,7 @@ import random
 import tkinter.messagebox
 
 from tkinter import Canvas
+from tkinter import Event
 from snake import Snake
 from snake_chunk import SnakeChunk
 from apple import Apple
@@ -14,6 +15,7 @@ class Game:
         self.height = height
         self.cell_size = cell_size
         self.score: int = 0
+        self.is_paused: bool = False
 
         snake_chunks: list = [
             SnakeChunk(cell_size, cell_size, cell_size),
@@ -28,6 +30,9 @@ class Game:
         self.apple = self.spawn_apple()
 
     def main(self):
+        if self.is_paused:
+            return
+
         self.snake.move()
 
         if self._is_snake_touch_wall() or self._is_snake_eats_itself():
@@ -49,6 +54,15 @@ class Game:
 
         if answer:
             self.canvas.master.destroy()
+
+    def toggle_pause(self, event: Event):
+        if not self.is_paused:
+            self.is_paused = True
+            self.canvas.master.score_text.set("PAUSE")
+        else:
+            self.is_paused = False
+            self.canvas.master.score_text.set(f"Your score: {self.score}")
+            self.main()
 
     def spawn_apple(self) -> Apple:
         while True:

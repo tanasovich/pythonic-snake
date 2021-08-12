@@ -23,6 +23,7 @@ if __name__ == "__main__":
     game = game.Game(canvas, width=FIELD_WIDTH, height=FIELD_HEIGHT, cell_size=CELL_SIZE)
 
     canvas.bind("<KeyPress>", game.snake.change_direction)
+    canvas.bind("<Return>", game.toggle_pause)
 
     game.main()
 
