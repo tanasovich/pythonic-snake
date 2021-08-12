@@ -14,7 +14,7 @@ if __name__ == "__main__":
     score_label = tkinter.Label(root, textvariable=score_text)
     score_label.pack(side="top")
 
-    canvas = tkinter.Canvas(root, width=FIELD_WIDTH, height=FIELD_WIDTH, background="blue")
+    canvas = tkinter.Canvas(root, width=FIELD_WIDTH, height=FIELD_WIDTH, background="#444941")
 
     canvas.pack()
 
